@@ -19,4 +19,4 @@ fi
 repo=`dirname ${TRAVIS_REPO_SLUG}`
 
 mkdir -p s3-upload/
-zip -r s3-upload/$repo-$release.zip ./dist
+zip -r s3-upload/$repo-$release.zip ${ARTIFACT_FOLDER}
