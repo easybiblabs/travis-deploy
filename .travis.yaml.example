@@ -1,0 +1,28 @@
+before_deploy: ./bin/before_deploy.sh
+
+deploy:
+  - provider: s3
+    secret_access_key:
+      secure: eX4mPlEkey
+    access_key_id:
+      secure: eX4mPlEkey
+    bucket: "assets-folder"
+    skip-cleanup: true
+    local-dir: s3-upload
+    upload-dir: reponame
+    detect_encoding: true
+    on:
+      tags: true
+      all_branches: true
+  - provider: s3
+    secret_access_key:
+      secure: eX4mPlEkey
+    access_key_id:
+      secure: eX4mPlEkey
+    bucket: "assets-folder"
+    skip-cleanup: true
+    local-dir: s3-upload
+    upload-dir: reponame
+    detect_encoding: true
+    on:
+      branch: master
