@@ -16,7 +16,7 @@ if [ -z "$release" ]; then
     exit 1
 fi
 
-repo=`dirname ${TRAVIS_REPO_SLUG}`
+repo=`basename ${TRAVIS_REPO_SLUG}`
 
 mkdir -p s3-upload/
 zip -r s3-upload/$repo-$release.zip ${ARTIFACT_FOLDER}
