@@ -16,6 +16,8 @@ if [ -z "$release" ]; then
     exit 1
 fi
 
+cd $TRAVIS_BUILD_DIR
+
 repo=`basename ${TRAVIS_REPO_SLUG}`
 
 mkdir -p s3-upload/
