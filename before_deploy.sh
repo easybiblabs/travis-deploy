@@ -8,7 +8,9 @@ if [ ! -z "$TRAVIS_TAG" ]; then
 fi
 
 if [ -z "$release" ] && [ ! -z "$TRAVIS_BRANCH" ]; then
-    release="${TRAVIS_BRANCH}-${TRAVIS_COMMIT}"
+    # escape e.g. t/topic so it doesn't look like a folder
+    escaped_branch="${TRAVIS_BRANCH//\//-}"
+    release="${escaped_branch}-${TRAVIS_COMMIT}"
 fi
 
 if [ -z "$release" ]; then
