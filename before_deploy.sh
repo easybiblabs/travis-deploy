@@ -24,3 +24,4 @@ repo=`basename ${TRAVIS_REPO_SLUG}`
 
 mkdir -p s3-upload/
 zip --quiet -r s3-upload/$repo-$release.zip ${ARTIFACT_FOLDER}
+echo "zip for s3 created"
