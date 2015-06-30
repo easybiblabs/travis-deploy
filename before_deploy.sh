@@ -11,6 +11,7 @@ if [ -z "$release" ] && [ ! -z "$TRAVIS_BRANCH" ]; then
     # escape e.g. t/topic so it doesn't look like a folder
     escaped_branch="${TRAVIS_BRANCH//\//-}"
     release="${escaped_branch}-${TRAVIS_COMMIT}"
+    echo "Escaped branch is ${escaped_branch}"
 fi
 
 if [ -z "$release" ]; then
@@ -21,7 +22,9 @@ fi
 cd $TRAVIS_BUILD_DIR
 
 repo=`basename ${TRAVIS_REPO_SLUG}`
-
+echo "repo is ${repo}"
+echo "release is ${release}"
+echo "artifactfolder is ${ARTIFACT_FOLDER}"
 mkdir -p s3-upload/
-zip --quiet -r s3-upload/$repo-$release.zip ${ARTIFACT_FOLDER}
+zip -r s3-upload/$repo-$release.zip ${ARTIFACT_FOLDER}
 echo "zip for s3 created"
